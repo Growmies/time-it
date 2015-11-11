@@ -20,7 +20,7 @@ TimeIt.prototype.timeEnd = function(label, inMilliseconds) {
 
   delete this.timers[label];
   if (inMilliseconds) {
-    return (seconds * 1000) + milliseconds;
+    return Math.round((seconds * 1000) + milliseconds);
   }
   return util.format("%ds %dms", seconds, milliseconds);
 }
