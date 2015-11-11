@@ -20,8 +20,8 @@ describe('Test TimeIt', function() {
         TimeIt.time(label);
         setTimeout(function() {
           var duration = TimeIt.timeEnd(label, true);
-          var min = (i / 1000) - 0.002;
-          var max = (i / 1000) + 0.002;
+          var min = (i / 1000) - 0.005;
+          var max = (i / 1000) + 0.005;
           expect(duration).to.be.above(min).and.to.be.below(max);
           iAmDone();
         }, i);
