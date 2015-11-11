@@ -10,7 +10,7 @@ TimeIt.prototype.time = function(label) {
   return;
 },
 
-TimeIt.prototype.timeEnd = function(label, raw) {
+TimeIt.prototype.timeEnd = function(label, inMilliseconds) {
   label = label || '__default';
   if (!this.timers[label]) return;
 
@@ -19,8 +19,8 @@ TimeIt.prototype.timeEnd = function(label, raw) {
   var milliseconds = duration[1]/1000000;
 
   delete this.timers[label];
-  if (raw) {
-    return seconds + milliseconds / 1000;
+  if (inMilliseconds) {
+    return (seconds * 1000) + milliseconds;
   }
   return util.format("%ds %dms", seconds, milliseconds);
 }

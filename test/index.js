@@ -1,14 +1,13 @@
 var TimeIt = require('../');
 var expect = require('chai').expect;
 
-
 describe('Test TimeIt', function() {
   it('Should time things accurately', function(done) {
     var timeIt = new TimeIt();
     timeIt.time('test');
     setTimeout(function() {
       var duration = timeIt.timeEnd('test', true);
-      expect(duration).to.be.above(0.050).and.to.be.below(0.056);
+      expect(duration).to.be.above(50).and.to.be.below(56);
       done();
     }, 50);
   });
@@ -24,8 +23,8 @@ describe('Test TimeIt', function() {
         timeIt.time(label);
         setTimeout(function() {
           var duration = timeIt.timeEnd(label, true);
-          var min = (i / 1000) - 0.005;
-          var max = (i / 1000) + 0.005;
+          var min = i - 5;
+          var max = i + 5;
           expect(duration).to.be.above(min).and.to.be.below(max);
           iAmDone();
         }, i);
@@ -42,19 +41,30 @@ describe('Test TimeIt', function() {
 
     setTimeout(function() {
       var duration = timeIt1.timeEnd('timer', true);
-      var min = (10 / 1000) - 0.005;
-      var max = (10 / 1000) + 0.005;
+      var min = 10 - 5;
+      var max = 10 + 5;
       expect(duration).to.be.above(min).and.to.be.below(max);
     }, 10);
 
     setTimeout(function() {
       var duration = timeIt2.timeEnd('timer', true);
-      var min = (50 / 1000) - 0.005;
-      var max = (50 / 1000) + 0.005;
+      var min = 50 - 5;
+      var max = 50 + 5;
       expect(duration).to.be.above(min).and.to.be.below(max);
       done();
     }, 50);
 
+  });
+
+  it('Should output raw values in milliseconds', function(done) {
+
+    var timeIt = new TimeIt();
+    timeIt.time('test');
+    setTimeout(function() {
+      var duration = timeIt.timeEnd('test', true);
+      expect(duration).to.be.above(1500).and.to.be.below(1550);
+      done();
+    }, 1500);
   });
 });
 
