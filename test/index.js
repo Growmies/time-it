@@ -6,7 +6,7 @@ describe('Test TimeIt', function() {
     var timeIt = new TimeIt();
     timeIt.time('test');
     setTimeout(function() {
-      var duration = timeIt.timeEnd('test', true);
+      var duration = timeIt.timeEnd('test');
       expect(duration).to.be.above(50).and.to.be.below(56);
       done();
     }, 50);
@@ -22,14 +22,14 @@ describe('Test TimeIt', function() {
         var label = 'test-' + i;
         timeIt.time(label);
         setTimeout(function() {
-          var duration = timeIt.timeEnd(label, true);
+          var duration = timeIt.timeEnd(label);
           var min = i - 5;
           var max = i + 5;
           expect(duration).to.be.above(min).and.to.be.below(max);
           iAmDone();
         }, i);
       })(i);
-    };
+    }
   });
 
   it('Should support different instances without label clashing', function(done) {
@@ -40,14 +40,14 @@ describe('Test TimeIt', function() {
     timeIt2.time('timer');
 
     setTimeout(function() {
-      var duration = timeIt1.timeEnd('timer', true);
+      var duration = timeIt1.timeEnd('timer');
       var min = 10 - 5;
       var max = 10 + 5;
       expect(duration).to.be.above(min).and.to.be.below(max);
     }, 10);
 
     setTimeout(function() {
-      var duration = timeIt2.timeEnd('timer', true);
+      var duration = timeIt2.timeEnd('timer');
       var min = 50 - 5;
       var max = 50 + 5;
       expect(duration).to.be.above(min).and.to.be.below(max);
@@ -61,7 +61,7 @@ describe('Test TimeIt', function() {
     var timeIt = new TimeIt();
     timeIt.time('test');
     setTimeout(function() {
-      var duration = timeIt.timeEnd('test', true);
+      var duration = timeIt.timeEnd('test');
       expect(duration).to.be.above(1500).and.to.be.below(1550);
       done();
     }, 1500);
@@ -70,8 +70,8 @@ describe('Test TimeIt', function() {
 
 function after(n, func) {
   return function() {
-    if (--n < 1){
+    if (--n < 1) {
       return func.apply(this, arguments);
     }
-  }
+  };
 }
