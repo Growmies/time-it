@@ -7,7 +7,7 @@ describe('Test TimeIt', function() {
     timeIt.time('test');
     setTimeout(function() {
       var duration = timeIt.timeEnd('test');
-      expect(duration).to.be.above(50).and.to.be.below(56);
+      expect(duration).to.be.above(45).and.to.be.below(60);
       done();
     }, 50);
   });
@@ -23,8 +23,8 @@ describe('Test TimeIt', function() {
         timeIt.time(label);
         setTimeout(function() {
           var duration = timeIt.timeEnd(label);
-          var min = i - 5;
-          var max = i + 5;
+          var min = i - 7;
+          var max = i + 7;
           expect(duration).to.be.above(min).and.to.be.below(max);
           iAmDone();
         }, i);
@@ -41,15 +41,15 @@ describe('Test TimeIt', function() {
 
     setTimeout(function() {
       var duration = timeIt1.timeEnd('timer');
-      var min = 10 - 5;
-      var max = 10 + 5;
+      var min = 10 - 7;
+      var max = 10 + 7;
       expect(duration).to.be.above(min).and.to.be.below(max);
     }, 10);
 
     setTimeout(function() {
       var duration = timeIt2.timeEnd('timer');
-      var min = 50 - 5;
-      var max = 50 + 5;
+      var min = 50 - 7;
+      var max = 50 + 7;
       expect(duration).to.be.above(min).and.to.be.below(max);
       done();
     }, 50);
@@ -62,7 +62,7 @@ describe('Test TimeIt', function() {
     timeIt.time('test');
     setTimeout(function() {
       var duration = timeIt.timeEnd('test');
-      expect(duration).to.be.above(1500).and.to.be.below(1550);
+      expect(duration).to.be.above(1490).and.to.be.below(1560);
       done();
     }, 1500);
   });
