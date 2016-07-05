@@ -1,6 +1,6 @@
 {
   "name": "time-it",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Simple timer fashioned after the console.time/console.timeEnd api.",
   "main": "index.js",
   "directories": {
